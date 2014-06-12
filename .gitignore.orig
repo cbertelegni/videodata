@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+.local_settings.py
+=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -52,8 +55,4 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-local_settings.py
-
-static/video
-
-log/*
+>>>>>>> ac9a80f5844a743be7192bb45d888bb040bf19f7

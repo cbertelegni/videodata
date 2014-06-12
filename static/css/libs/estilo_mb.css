@@ -1,0 +1,150 @@
+@charset "utf-8";
+@font-face {
+    font-family: 'ArchivoNarrowRegular';
+    src: url('http://especiales.lanacion.com.ar/multimedia/proyectos/fonts/archivonarrow-regular-webfont.eot');
+    src: url('http://especiales.lanacion.com.ar/multimedia/proyectos/fonts/archivonarrow-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://especiales.lanacion.com.ar/multimedia/proyectos/fonts/archivonarrow-regular-webfont.woff') format('woff'),
+         url('http://especiales.lanacion.com.ar/multimedia/proyectos/fonts/archivonarrow-regular-webfont.ttf') format('truetype'),
+         url('http://especiales.lanacion.com.ar/multimedia/proyectos/fonts/archivonarrow-regular-webfont.svg#ArchivoNarrowRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.cleaner{ clear:both;}
+
+body {margin: 0 0;}
+/*div.load {width:24px; height:24px; background:url(../imgs/ajax-loader.gif); position:absolute; top:6px; left:300px;}*/
+div.componentes {width:100%; height:auto; position:relative; font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#000}
+
+/*///////// PRE PARTIDO ////////////////////////*/
+
+div.componentes div.prepartido{width:100%; height: auto; margin-bottom: 30px}
+div.componentes div.prepartido div.titulo{height:32px; cursor:default; padding-left:9px; padding-right:9px; line-height:2;  font-size:17px; background:#e16039; color:#FFF; font-family: 'ArchivoNarrowRegular'; float:left;}
+
+div.componentes div.prepartido div.items{width:100%; height:auto;}
+div.componentes div.prepartido div.items div.it{width:100%; height:85px; margin:0px; padding: 0px; border:1px solid #e7e7e7; font-family: 'ArchivoNarrowRegular'; font-size:20px; display: inline-block; }
+div.componentes div.prepartido div.items div.it div.icon{width:49%; height:85px; float:left;  }
+div.componentes div.prepartido div.items div.it div.texto{width:49%; height:45px; text-align: center; float:left; margin-top: 20px }
+
+div.componentes div.prepartido div.items div.it div#hora{ background-repeat:no-repeat; background-position: 10px 20px; }
+div.componentes div.prepartido div.items div.it div#canal{ background-repeat:no-repeat; background-position: 10px 20px; }
+div.componentes div.prepartido div.items div.it div#arbitro{ background-repeat:no-repeat; background-position: 10px 20px; }
+
+
+/*///////// CLAVES ////////////////////////*/
+ 
+div.componentes div.claves {width:100%; height:auto; margin-top:30px; }
+
+div.componentes div.claves ul{width:100%; height:auto;}
+div.componentes div.claves ul li{width:100%;}
+
+div.componentes div.claves ul li div.icono{width:63px; height:63px; background-repeat:no-repeat; display: inline-block; }
+
+div.componentes div.claves ul li div.texto{width:70%; padding-left:15px; cursor:default; margin-bottom:20px; display: inline-block;}
+div.componentes div.claves ul li div.texto span{font-weight:bold; line-height:2 }
+
+
+/*///////// VIDEO ////////////////////////*/
+div.componentes div.videos{width:100%; height:382px; margin-top:40px; position: relative; }
+div.componentes div.videos div.botonera{width:100%; height:30px;  }
+div.componentes div.videos div.botonera div.titulo{height:32px; cursor:default; position: absolute; top:-32px; left:0px; padding-left:9px; padding-right:9px; line-height:2;  font-size:17px; background:#e16039; color:#FFF; font-family: 'ArchivoNarrowRegular'; float:left;}
+div.componentes div.videos div.botonera div.btns{width:auto; height:32px; overflow: hidden; border-bottom:1px solid #e7e7e7 }
+div.componentes div.videos div.botonera div.btns div.btn_off{width:16%; height:30px; cursor:pointer; text-align:center; line-height:2.2; font-family:Arial, Helvetica, sans-serif; color:#247890; font-size:12px; border:1px solid #e7e7e7; float:left; transition: background 0.5s; -moz-transition: background 0.5s; -webkit-transition: background 0.5s; -o-transition: background 0.5s; }
+div.componentes div.videos div.botonera div.btns div.btn_off:hover{background:#f2f2f2 }
+div.componentes div.videos div.botonera div.btns div.btn_on{width:15%; height:27px; cursor:default; text-align:center; line-height:2.2; font-family:Arial, Helvetica, sans-serif; color:#247890;  font-size:12px; border:1px solid #e7e7e7; border-bottom:4px inset #247890; float:left; background:#E7E7E7; }
+
+div.componentes div.videos div.contenedor{width:100%; height:350px;  position:relative; overflow:hidden;}
+div.componentes div.videos div.contenedor div.slide{ width:100%; height:350px; display:inline-block;  position:absolute; top:0px; left:0px;}
+div.componentes div.videos div.contenedor div.ficha{width:100%; height:350px; background:#f6f6f6; float:left;}
+div.componentes div.videos div.contenedor div.ficha div.iframe{width: 100% !important}
+
+/*///////// ESTADISTICAS ////////////////////////*/
+div.componentes div.estadisticas{height:auto; margin-top:40px;}
+div.componentes div.estadisticas div.titulo{height:32px; cursor:default; margin-bottom:20px; padding-left:9px; padding-right:9px; line-height:2;  display:inline-block; font-size:17px; background:#e16039; color:#FFF; font-family: 'ArchivoNarrowRegular';}
+div.componentes div.estadisticas div.ver,
+div.componentes div.estadisticas div.ver a
+{height:32px; cursor:pointer; text-decoration:none;  padding-left:9px; font-weight:bold; color:#247890; display:inline-block; line-height:2; font-size:12px;}
+div.componentes div.estadisticas div.total{height:32px; cursor:default; margin-bottom:50px; line-height:2; font-size:17px; color:#000; font-family: 'ArchivoNarrowRegular';}
+div.componentes div.estadisticas div.total span{ color:#e16039; }
+
+div.componentes div.estadisticas div.conte_barras{width:100%; height:140px; cursor:default;}
+div.componentes div.estadisticas div.conte_barras div.barras{width:100%; height:110px; position:relative;}
+div.componentes div.estadisticas div.conte_barras div.barras div.bar1,
+div.componentes div.estadisticas div.conte_barras div.barras div.bar2,
+div.componentes div.estadisticas div.conte_barras div.barras div.bar3
+{width:32%; background:#0F3644; display: inline-block; text-align:center; bottom:0px;}
+
+div.componentes div.estadisticas div.conte_barras div.barras div.bar1{height:30px; left:0px; opacity:0.8; filter:alpha(opacity=80);}
+div.componentes div.estadisticas div.conte_barras div.barras div.bar2{height:10px; left:207px; opacity:0.6; filter:alpha(opacity=60);}
+div.componentes div.estadisticas div.conte_barras div.barras div.bar3{height:20px; left:414px; opacity:1; filter:alpha(opacity=100);}
+
+
+div.componentes div.estadisticas div.conte_barras div.barras div.bar1 div.numero,
+div.componentes div.estadisticas div.conte_barras div.barras div.bar2 div.numero,
+div.componentes div.estadisticas div.conte_barras div.barras div.bar3 div.numero
+{width:32%; color:#0F3644; position:absolute; top:100px; font-size:20px; font-family: 'ArchivoNarrowRegular';}
+
+div.componentes div.estadisticas div.conte_barras div.equipos{width:100%; height:50px; margin-top:15px;}
+div.componentes div.estadisticas div.conte_barras div.equipos div.g,
+div.componentes div.estadisticas div.conte_barras div.equipos div.e,
+div.componentes div.estadisticas div.conte_barras div.equipos div.p
+{width:32%; height:50px; text-align:center; display: inline-block; font-size:12px; text-transform:uppercase;}
+
+div.componentes div.estadisticas div.conte_barras div.equipos div.g span,
+div.componentes div.estadisticas div.conte_barras div.equipos div.e span,
+div.componentes div.estadisticas div.conte_barras div.equipos div.p span
+{font-weight:bold}
+
+
+/*///////// tweets destacados ////////////////////////*/
+
+div.componentes div.tweets{width:100%; margin-top:50px;}
+div.componentes div.tweets div.titulo{height:32px; cursor:default; margin-bottom:20px; padding-left:9px; padding-right:9px; line-height:2;  display:inline-block; font-size:17px; background:#e16039; color:#FFF; font-family: 'ArchivoNarrowRegular';}
+iframe#twitter-widget-0 {
+    width:100%;
+  }
+/*///////// PROX PARTIDOS ////////////////////////*/
+
+div.componentes div.partidos{width:100%; margin-top:50px;}
+div.componentes div.partidos div.titulo{height:32px; cursor:default; margin-bottom:20px; padding-left:9px; padding-right:9px; line-height:2;  display:inline-block; font-size:17px; background:#e16039; color:#FFF; font-family: 'ArchivoNarrowRegular';}
+
+div.componentes div.partidos div.conte{width:100%;}
+div.componentes div.partidos div.conte div.equipo1{width:100%; font-size:12px; float:left; }
+div.componentes div.partidos div.conte div.equipo2{width:100%; font-size:12px; margin-top:20px; float:left; }
+
+div.componentes div.partidos div.conte div.equipo1 div.nombre,
+div.componentes div.partidos div.conte div.equipo2 div.nombre
+{width:100%; padding-bottom:5px; font-size:18px; cursor:default; font-family: 'ArchivoNarrowRegular'; border-bottom:1px solid #e7e7e7}
+
+div.componentes div.partidos div.conte div.equipo1 ul,
+div.componentes div.partidos div.conte div.equipo2 ul
+{width:100%; }
+
+div.componentes div.partidos div.conte div.equipo1 ul li,
+div.componentes div.partidos div.conte div.equipo2 ul li
+{width:100%; height:auto; margin-top:10px; cursor:default;  border-bottom:1px solid #ccc; padding-bottom: 5px;}
+
+div.componentes div.partidos div.conte div.equipo1 ul li div.fecha,
+div.componentes div.partidos div.conte div.equipo2 ul li div.fecha
+{width:10%; text-align:left; display: inline-block; color:#333; padding-left:5px; padding-right:5px; border-right:1px solid #e7e7e7; font-weight:bold; overflow: hidden;}
+
+div.componentes div.partidos div.conte div.equipo1 ul li div.equi1,
+div.componentes div.partidos div.conte div.equipo2 ul li div.equi1
+{width:30%; text-align:center; display: inline-block;  overflow: hidden;}
+
+div.componentes div.partidos div.conte div.equipo1 ul li div.versus,
+div.componentes div.partidos div.conte div.equipo2 ul li div.versus
+{width:5%; padding-left:10px; text-align:center; display: inline-block;  padding-right:10px; font-size:15px; color:#e16039; font-family: 'ArchivoNarrowRegular'; }
+
+div.componentes div.partidos div.conte div.equipo1 ul li div.equi2,
+div.componentes div.partidos div.conte div.equipo2 ul li div.equi2
+{width:30%; text-align:center; display: inline-block;  overflow: hidden; }
+
+div.componentes div.partidos div.conte div.equipo1 ul li div.hora,
+div.componentes div.partidos div.conte div.equipo2 ul li div.hora
+{width:12%; padding-left:5px; text-align:right; color:#666; display: inline-block;  overflow: hidden;}
+	
+div.componentes div.partidos div.ver,
+div.componentes div.partidos div.ver a
+{height:32px; cursor:pointer; text-decoration:none; padding-top:10px; font-weight:bold; color:#247890; line-height:3; font-size:12px;}	
+
