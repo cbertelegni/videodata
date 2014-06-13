@@ -23,25 +23,51 @@ import re
 import sys
 from pyquery import PyQuery as pq
 from lxml import etree
-from videodata_app import models
+from videodata_app.models import Video, Tag
+import json
+from django.core.context_processors import csrf
 
 def home(request):
 	return render_to_response('videodata_app/index.html', {})
 
 
-def taguear_video(request, video_id):
+def tagging(request, video_id):
+	# print unicode(csrf(request)['csrf_token'])
 	# url = "http://www.youtube.com/get_video_info?video_id=Ghz5dQaMKTA"
 	# response = urllib2.urlopen(url)
 	# html = response.read()
 	# print html
-	return render_to_response('videodata_app/tagging.html', {"video_id": video_id})
+	
+	video, created = Video.objects.get_or_create(video_id=video_id)
+	
+	if created:
+		print video
+
+	else:
+		print video
+
+	return render_to_response('videodata_app/tagging.html', {"video": video, 'csrf_token': unicode(csrf(request)['csrf_token'])})
 
 
 def save_tag(request, video_id, tag_id):
-	pass
+	
+	video = Video.objects.filter(video_id = video_id).first
+	print video
 
 
-def scrap_subtitles_es(): # for maleb
+	# print tag_id
+	response_data = {}
+
+	response_data['video_id'] = video_id
+	response_data['tag_id'] = tag_id
+	response_data['post'] = request.POST
+
+	# Tag.objects.get_or_create()
+
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def scrap_subtitles_es():
+# for @maleb, Thanks! :)
 	def srt_time_to_seconds(time):
 	    split_time=time.split(',')
 	    major, minor = (split_time[0].split(':'), split_time[1])

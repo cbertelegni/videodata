@@ -1,13 +1,16 @@
-window.onload =  startApp;
+// window.onload =  startApp;
 
-	function startApp(){
-		video = new VideoActions("video");
+progress_bar_loading = 0;
+	function startApp(video){
+		// video = new VideoActions("video");
 		var play_pause = $("#play_pause"),
 			add_point = $("#add_point"),
 			content_bar = $("#content_bar"),
 			progress_bar = $("#progress-bar"),
 			mark_tmpl = $("#mark_tmpl").html(),
+			tmpl_row_tag = $("#tmpl_row_tag").html(),
 			popup = $(".cont_popup");
+
 		play_pause.on("click", function(e){
 			e.preventDefault();
 			play_or_pause(video, play_pause, progress_bar);
@@ -17,19 +20,17 @@ window.onload =  startApp;
 		add_point.on('click', function(e) {
 			e.preventDefault();
 			video.pause();
-			$("input[name='timestart']").val(video.v.currentTime);
+			if (progress_bar_loading) {
+				window.clearInterval(progress_bar_loading);
+			};
+
+			play_pause.html('<span class="glyphicon glyphicon-play">');
+			$("input[name='start_time']").val(video.currentTime());
+			$("input[name='end_time']").val(video.currentTime() + 4);
 			// play_or_pause(video, play_pause, progress_bar);
 			popup.fadeIn();
 		});
 
-		
-	
-		// popup****
-		 $(".cont_popup .close").on("click", function(e){
-		 	e.preventDefault();
-		 	popup.fadeOut('fast');
-		 	document.forms.form.reset()
-		 });
 
 		 // confirm_marck *****
 		 $("#confirm_marck").on('click', function(e) {
@@ -42,69 +43,97 @@ window.onload =  startApp;
 			});
 			// console.log(data)
 			// data.timestart = video.v.currentTime;
-			add_mark(mark_tmpl, video, content_bar, data, popup);
+			add_mark(mark_tmpl, video, content_bar, data, popup, tmpl_row_tag);
 		 	
 		 });
+		
+	
+		// popup****
+		 $(".cont_popup .cancelar").on("click", function(e){
+		 	e.preventDefault();
+		 	popup.fadeOut('fast');
+		 	document.forms.form.reset()
+		 });
+
 	}
 
 
 	function play_or_pause(video, btn, progress_bar, up_to){
-		if(video.is_play()){
+		if(!video.paused()){
 			video.pause();
-			btn.html("Play");
+			btn.html('<span class="glyphicon glyphicon-play">');
 			window.clearInterval(progress_bar_loading);
 		}else{
 			video.play();
-			btn.html("Pause");
+			btn.html('<span class="glyphicon glyphicon-pause">');
 			progress_bar_loading = setInterval(update_bar, 1000)
 		}
 
 		function update_bar(up_to){
-			up_to ? up_to = up_to : up_to = video.get_porcent_progres();
+			up_to ? up_to = up_to : up_to = get_porcent_progres(video);
 			if(up_to <= 100)
 				progress_bar.css("width", up_to + "%");
 			console.log("update_bar: " + up_to);
 		}
 	}
 
-	function add_mark(tmpl, v, cont_bar, data, popup){
+	function add_mark(tmpl, v, cont_bar, data, popup, tmpl_row_tag){
 		// v.pause();
 		// console.log(data)
 		var mark = $(tmpl);
+		
 		mark.data(data)
-			.css({left: v.get_porcent_progres()+"%"});
+			.css({left: get_porcent_progres(video)+"%"});
+		// addd clas for track this data
+		mark.addClass("time_" + v.currentTime())
+		$(tmpl_row_tag).addClass("time_" + v.currentTime())
+
 		cont_bar.append(mark);
+		row = tmpl_row_tag
+				.replace("{$quien$}", data.name)
+				.replace("{$que$}", data.short_desc)
+				.replace("{$descripcion$}", data.description);
+
+		// console.log(v.currentTime());
+		$("#list_tags").append(row);
+
+		// console.log(location.href +v.currentTime())
+		var tag_id = null;
+		$.post(location.href + tag_id , data, function(data_response, textStatus, xhr) {
+			console.log(data_response)
+		});
+
+
 		popup.fadeOut();
 		document.forms.form.reset()
 	}
 
 
-	function add_tooltip_for_mark(mark){
-		console.log(mark.data())
-	}
+	function get_porcent_progres(video){
+		return video.currentTime() * 100 / video.duration();
+	};
 
+	// function VideoActions(video_id){
+	// 		this.v = document.getElementById(video_id);
+	// 	};
 
-	function VideoActions(video_id){
-			this.v = document.getElementById(video_id);
-		};
+	// 	VideoActions.prototype.pause = function(){
+	// 			this.v.pause();
+	// 		}
 
-		VideoActions.prototype.pause = function(){
-				this.v.pause();
-			}
+	// 	VideoActions.prototype.play = function(){
+	// 			this.v.play();
+	// 		}
 
-		VideoActions.prototype.play = function(){
-				this.v.play();
-			}
-
-		VideoActions.prototype.is_play = function(){
-				// return true if video is play;
-				return !this.v.paused && !this.ended;
-			}
+	// 	VideoActions.prototype.is_play = function(){
+	// 			// return true if video is play;
+	// 			return !this.v.paused && !this.ended;
+	// 		}
 		
-		VideoActions.prototype.get_porcent_progres = function(){
-				// return the porcent progress of video
-				return this.v.currentTime * 100 / this.v.duration;
-			}
+	// 	VideoActions.prototype.get_porcent_progres = function(){
+	// 			// return the porcent progress of video
+	// 			return this.v.currentTime * 100 / this.v.duration;
+	// 		}
 
 
 		/*

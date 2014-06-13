@@ -5,14 +5,37 @@ body {margin: 0px 0 150px; 	/* 50px is the height of the navbar - change this if
 
 [hidden] { display: none;}
 
+.content { width: 960px;}
+.bg_orange { background: #ff6c00 }
+
+header { padding: 20px 0}
+nav { padding: 5px 0}
+nav ul { padding: 0}
+nav ul li { display: inline-block; }
+nav ul li a, nav ul li a:hover { color: #fff; padding: 0 15px 0 0px;}
 section#cont_video { position: relative; width: 80%; margin: 0 auto;} 
-#video { /*width: 500px*/ }
-#controls { position: absolute; left: 5%; bottom: 20px; width: 90%; opacity: .2 }
-#controls:hover { opacity: 1}
-.progress { position: relative; overflow: visible;}
+#video { /*width: 500px*/ height: 300px }
+#controls { position: absolute; left: 8%; bottom: -15px; width: 90%; opacity: .2;   -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out; }
+#controls:hover {
+  zoom: 1;
+  filter: alpha(opacity=1);
+  opacity: 1;
+}
+#add_point, #play_pause {color: #ff6c00; position: absolute; left: -7%;}
+#add_point {bottom: 65px; }
+#play_pause {  bottom: 20px;   }
+.progress { position: relative; overflow: visible; height: 10px}
 .progress .mark { width: 25px; height: 20px; position: absolute; top: -20px; }
 
-#form-data { width: 40%; position: absolute; top: 20px; left: 30%; background: #fff; border-radius: 4px; padding: 20px}
+#form-data { width: 40%; position: absolute; top: 20px; left: 30%; background: #ff6c00; border-radius: 4px; padding: 20px}
+#form-data input, #form-data textarea { background: #fff; margin: 0 0 15px; }
+
+#list_tags { margin: 20px 0 0}
+#list_tags .row { margin: 10px 0 0 0; border-top: solid 1px #ccc; padding: 10px }
 
 
 .cont_popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(100, 100, 100, .3); }

@@ -12,7 +12,7 @@
     <meta name="author" content="Cristian Bertelegni, Marcos Vanetta, Yanina Ronconi, Florencia Coelho">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/libs/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/libs/bootstrap/bootstrap.css' %}">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     
     <!-- Custom CSS for the 'Full Width Pics' Template -->
@@ -45,9 +45,10 @@
     <script type="text/javascript" src="{% static 'js/libs/jquery-1.10.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/libs/mediaelement-and-player.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/libs/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/libs/youtube-video.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/libs/popcorn-complete.min.js' %}"></script>
 -->
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
     <style type="text/css">
         .mark { background: url({% static 'img/flecha.png' %}) 0 0 no-repeat; }
     </style>
@@ -57,8 +58,22 @@
 </head>
 
 <body>
-
-    <div class=".container-fluid" style="position:relative;">
+    <header class="bg_orange">
+        <div class="container">
+            <img src="{% static 'img/logo_peque.png' %}">
+        </div>
+    </header>
+    <nav class="bg_orange">
+        <div class="container">
+            <ul>
+                <li><a href="#">Tags videos</a></li>
+                <li><a href="#">Search videos tags</a></li>
+                <li><a href="#">Suggested videos</a></li>
+                <li><a href="#">Last vagged videos</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="position:relative;">
 
 {% block content %}
     Content of the page...

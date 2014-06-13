@@ -11,6 +11,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'videodata_app.views.home', name='home'),
-    url(r'^tagging/(?P<video_id>[\w-]+)/$', 'videodata_app.views.taguear_video', name='tagging'),
+    url(r'^tagging/(?P<video_id>[\w-]+)/$', 'videodata_app.views.tagging', name='tagging'),
     url(r'^tagging/(?P<video_id>[\w-]+)/(?P<tag_id>[\w-]+)$', 'videodata_app.views.save_tag', name='save_tag'),
 )

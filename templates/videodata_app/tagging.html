@@ -3,23 +3,22 @@
 
 
 {% block content %}
-<div class="row">
-	<div class="col-md-12">
-		<img src="{% static 'img/logo_peque.png' %}">
-	</div>
-</div>
-<br>
+
 <div class="row">
   <div class="col-md-12">
 	<section id="cont_video">
-		<!-- <video id="video" width="100%" controls="false"> -->
-		<video id="video" width="100%">
-			<source src="{% static 'video/DINOSAURIOS.mp4' %}">
+		<div id="video"></div>
+		<!--
+
+		<video id="video" width="100%" data-videoid="{{video.video_id}}" data-id="{{video.id}}">
+			<source src="{% static "video/"|add:video.video_id|add:".mp4" %}">
 		</video>
+		-->
 		<nav id="controls">
+			<!-- 
+			 -->
 			<div class="btns-group">
-				<button id="play_pause" class="btn btn-default">play</button>
-				<!-- <button id="pause" class="btn btn-default">pause</button> -->
+				<button id="play_pause" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
 				<button id="add_point" class="btn btn-default">Add point</button>
 			</div>
 			<br>
@@ -29,33 +28,92 @@
 			</div>
 		</nav>
 	</section>
+	
   </div>
 </div>
+<div id="list_tags">
+	<script type="text/template" id="tmpl_row_tag">
+	<div class="row">
+		<div class="col-md-6">
+			<b>{$quien$}</b>
+		</div>
+		<div class="col-md-6">{$que$}</div>	
+		<div class="col-md-12">{$descripcion$}</div>	
+	</div>
+	</script>
+</div>
+<script type="text/javascript">
 
+$(function(){
+	$.ajaxSetup({
+	  data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+	});
+	console.log('{{ csrf_token }}');
+ 	video = Popcorn.youtube(
+		'#video',
+		'https://www.youtube.com/watch?v={{video.video_id}}' );
+		// add a footnote at 2 seconds, and remove it at 6 seconds
+	// video.footnote({
+	// 	// start: 2,
+	// 	// end: 6,
+	// 	// text: "Pop!",
+	// 	// target: "popc"
+	// });
+	video.autoplay(false);
 
+	// video.addEventListener( "loadstart", function( e ) {
+
+	//   	console.log( "loadstart fired!" );
+		startApp(video);
+
+	// }, false );
+
+})
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="{% url 'tagging' 'CjIk-hM-S1s'%}">DDJJAA #DDJAwards</a>
+<br>
+<a href="{% url 'tagging' 'yICAQNVwX-o'%}">Marcelo Own Goal #WorldCup</a>
+<br>
+<a href="{% url 'tagging' 'uHpR6FsjosM'%}">Robot Journalism #GENsummit</a>
+	
 
 <!-- POPUP -->
 <div class="cont_popup" hidden>
 	<div id="form-data">
-		<form id="form">
-			
+			{% csrf_token %}
+		<form id="form" role="form">
+			<div class="form-group">
 			<input type="hidden" value=""  name="start_time" />
 			<input type="hidden" value=""  name="end_time" />
 
-						<input style="width: 100%" type="text" value=""  name="quien" placeholder="De quién se trata?" />
-					
-						<input style="width: 100%" type="text" value=""  name="que" placeholder="Qué pasó?"/>
-						<textarea name="desc" style="width: 100%" placeholder="Descripción sobre lo ocurrido..."></textarea>
-
+			<input class="form-control" style="width: 100%" type="text" value=""  name="name" placeholder="De quién se trata?" />
+		
+			<input class="form-control" style="width: 100%" type="text" value=""  name="short_desc" placeholder="Qué pasó?"/>
 			
-			<button class="btn-default close">Cancelar</button>
-			<button id="confirm_marck"  class="btn-default">Guardar</button>
+			<textarea class="form-control" name="description" style="width: 100%" placeholder="Descripción sobre lo ocurrido..."></textarea>
+
+			<br>
+			<button class="btn btn-default cancelar">Cancelar</button>
+			<button id="confirm_marck"  class="btn btn-default pull-right">Guardar</button>
+			</div>
 		</form>
 	</div>
+
 </div>	
 	<script type="text/template" id="mark_tmpl">
 		<div class="mark"></div>
 	</script>
 
+
+	<!-- 
+	 -->
 	<script type="text/javascript" src="{% static 'js/tagging.js' %}"></script>
+
+
 {% endblock %}
