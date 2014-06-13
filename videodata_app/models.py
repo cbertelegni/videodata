@@ -10,7 +10,8 @@ class Video(models.Model):
 	
 	def __unicode__(self):
 		return "Video is: %s" % (self.video_id,)
-
+	class Meta:
+		ordering = ('video_id',)
 
 class Tag(models.Model):
 	name = models.CharField(max_length='100', null=False, blank=False)
@@ -19,6 +20,10 @@ class Tag(models.Model):
 	start_time = models.CharField(max_length='140', null=False, blank=False)
 	end_time = models.CharField(max_length='140', null=True, blank=True)
 	video = models.ForeignKey(Video, related_name="tags")
+
+	class Meta:
+		ordering = ('name', 'short_desc',)
+
 
 	def __unicode__(self):
 		return "%s, %s " % (self.name, self.short_desc,)

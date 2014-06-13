@@ -49,18 +49,32 @@ def tagging(request, video_id):
 	return render_to_response('videodata_app/tagging.html', {"video": video, 'csrf_token': unicode(csrf(request)['csrf_token'])})
 
 
-def save_tag(request, video_id, tag_id):
+def save_tag(request, video_id):
 	
-	video = Video.objects.filter(video_id = video_id).first
-	print video
+	video = Video.objects.filter(video_id = video_id, ).first()
+	print video.id
+	tag, created = Tag.objects.get_or_create(
+		video_id = video.id,
+		name = request.POST['name'],
+		short_desc = request.POST['short_desc'],
+		description = request.POST['description'],
+		start_time = request.POST['start_time'],
+		end_time= request.POST['end_time'],
+		)
+	print tag
+	if(created):
+		pass
+	else:
+		pass
 
 
 	# print tag_id
 	response_data = {}
 
 	response_data['video_id'] = video_id
-	response_data['tag_id'] = tag_id
-	response_data['post'] = request.POST
+	# response_data['tag_id'] = tag_id
+	response_data['tag'] = request.POST
+	response_data['tag_id'] = tag.id
 
 	# Tag.objects.get_or_create()
 

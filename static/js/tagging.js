@@ -85,8 +85,6 @@ progress_bar_loading = 0;
 		mark.data(data)
 			.css({left: get_porcent_progres(video)+"%"});
 		// addd clas for track this data
-		mark.addClass("time_" + v.currentTime())
-		$(tmpl_row_tag).addClass("time_" + v.currentTime())
 
 		cont_bar.append(mark);
 		row = tmpl_row_tag
@@ -99,8 +97,13 @@ progress_bar_loading = 0;
 
 		// console.log(location.href +v.currentTime())
 		var tag_id = null;
-		$.post(location.href + tag_id , data, function(data_response, textStatus, xhr) {
+		$.post(location.href + "crear_tag/" , data, function(data_response, textStatus, xhr) {
 			console.log(data_response)
+		
+			mark.addClass("tag_id" + v.currentTime());
+			$(tmpl_row_tag).addClass("tag_id" + data_response.tag_id);
+
+
 		});
 
 
