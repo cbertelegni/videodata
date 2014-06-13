@@ -14,7 +14,7 @@ nav ul { padding: 0}
 nav ul li { display: inline-block; }
 nav ul li a, nav ul li a:hover { color: #fff; padding: 0 15px 0 0px;}
 section#cont_video { position: relative; width: 80%; margin: 0 auto;} 
-#video { /*width: 500px*/ height: 300px }
+#video { /*width: 500px*/ height: 400px; margin: 20px 0 0; }
 #controls { position: absolute; left: 8%; bottom: -15px; width: 90%; opacity: .2;   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
   -ms-transition: opacity 1s ease-in-out;

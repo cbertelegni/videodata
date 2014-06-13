@@ -60,11 +60,13 @@
 <body>
     <header class="bg_orange">
         <div class="container">
-            <img src="{% static 'img/logo_peque.png' %}">
+            <div style="height: 79px; overflow: hidden; width: 283px;">
+            <img src="{% static 'img/logo_peque.png' %}" style="margin-left: -8px;margin-top: -3px;">
+            </div>
         </div>
     </header>
     <nav class="bg_orange">
-        <div class="container">
+        <div class="container" hidden>
             <ul>
                 <li><a href="#">Tags videos</a></li>
                 <li><a href="#">Search videos tags</a></li>
