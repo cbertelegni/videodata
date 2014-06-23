@@ -80,8 +80,11 @@ def save_tag(request, video_id):
 
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+
 def scrap_subtitles_es():
-# for @maleb, Thanks! :)
+	# for @malev, Thanks! :)
+	""" esto no esta implementado..."""
+
 	def srt_time_to_seconds(time):
 	    split_time=time.split(',')
 	    major, minor = (split_time[0].split(':'), split_time[1])

@@ -16,10 +16,10 @@ nav ul li a, nav ul li a:hover { color: #fff; padding: 0 15px 0 0px;}
 section#cont_video { position: relative; width: 80%; margin: 0 auto;} 
 #video { /*width: 500px*/ height: 400px; margin: 20px 0 0; }
 #controls { position: absolute; left: 8%; bottom: -15px; width: 90%; opacity: .2;   -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out; }
+  -moz-transition: opacity .5s ease-in-out;
+  -ms-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out; }
 #controls:hover {
   zoom: 1;
   filter: alpha(opacity=1);
@@ -29,7 +29,7 @@ section#cont_video { position: relative; width: 80%; margin: 0 auto;}
 #add_point {bottom: 65px; }
 #play_pause {  bottom: 20px;   }
 .progress { position: relative; overflow: visible; height: 10px}
-.progress .mark { width: 25px; height: 20px; position: absolute; top: -20px; }
+.progress .mark { width: 25px; height: 20px; position: absolute; top: -20px; margin-left: -10px}
 
 #form-data { width: 40%; position: absolute; top: 20px; left: 30%; background: #ff6c00; border-radius: 4px; padding: 20px}
 #form-data input, #form-data textarea { background: #fff; margin: 0 0 15px; }
