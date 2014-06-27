@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 
 class Video(models.Model):
+	# http://gdata.youtube.com/feeds/api/videos/91pBlB8oH_E
 	video_id = models.CharField(max_length='128', null=False, blank=False, unique=True)
 	description = models.CharField(max_length='128', null=True, blank=True)
 	

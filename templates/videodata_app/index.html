@@ -1,1 +1,15 @@
 {% extends "videodata_app/base.html"%}
+
+{% block content %}
+<h2>Videos tageados:</h2>
+	{% for video in videos %}
+		<!-- <p class="bg-primary"> -->
+			<div class="col-sm-4" style="margin-top: 10px; text-align: center">
+				<a href="/view/{{video.video_id}}">
+					<img width="90%" src="http://i1.ytimg.com/vi/{{video.video_id}}/0.jpg" alt="{{video.video_id}}" class="img-rounded">
+					<b>{{video.video_id}}</b>
+				</a>
+			</div>
+		<!-- </p> -->
+	{% endfor %}
+{% endblock%}

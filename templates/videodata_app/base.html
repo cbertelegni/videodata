@@ -58,15 +58,15 @@
 </head>
 
 <body>
-    <header class="bg_orange">
+    <header class="border_orange">
         <div class="container">
-            <div style="height: 79px; overflow: hidden; width: 283px;">
-            <img src="{% static 'img/logo_peque.png' %}" style="margin-left: -8px;margin-top: -3px;">
+            <div style="background:#fff; padding: 20px; text-align: center">
+                <h1 style="background: url({% static 'img/logo_peque.png' %}) -20px -13px no-repeat; width: 260px; height:60px; text-indent: -5000px; display: inline-block">Video data</h1>
             </div>
         </div>
     </header>
     <nav class="bg_orange">
-        <div class="container" hidden>
+        <div class="container">
             <ul>
                 <li><a href="#">Tags videos</a></li>
                 <li><a href="#">Search videos tags</a></li>
@@ -75,7 +75,7 @@
             </ul>
         </div>
     </nav>
-    <div class="container" style="position:relative;">
+    <div class="container" style="position:relative; padding:20px 0">
 
 {% block content %}
     Content of the page...
@@ -86,16 +86,16 @@
     
     <!-- FOOTER -->
     
-    <footer hidden class="navbar navbar-fixed-bottom navbar-default">
+    <footer class="navbar navbar-fixed-bottom navbar-default bg_orange_alpha">
     <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <p>Diseño: <a href="https://twitter.com/yanronconi">Yanina Ronconi</a> | Producción Periodística: <a href="https://twitter.com/fcoel">Florencia Coelho</a> | Programación: <a href="https://twitter.com/cbertelegni">Cristian Bertelegni</a></p>
+                </div>
+          
             {% block footer %}
                 <!-- Web Developer <a href="http://twitter.com/cbertelegni" target="_blank">@cbertelegni</a>. -->
             {% endblock %}
-            <br>
-            <br>
-                </div>
             </div>
     </div>
     </footer>

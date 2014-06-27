@@ -3,20 +3,10 @@
 from django.shortcuts import get_object_or_404, redirect, render_to_response, render
 from django.http import HttpResponse, HttpRequest, QueryDict
 from django.core.context_processors import csrf
-# from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
-# from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-# from utils import get_index_cols_csv # helpers de la app congreso
-# from congreso.models import Legislador, Partido, MiembrosPartido, MiembrosAgrupacion, Ley, Sesion, Voto, AliasNombre, AliasPartido
-# from congreso.models import Legislador, Partido, Ley, Sesion, Voto, AliasNombre, AliasPartido
 import csv
 import datetime
-# from var_dump import var_dump # Debugs objs
-# import the logging library
-# import logging
-# Get an instance of a logger
-# log = logging.getLogger(__name__)
 import urllib2
 import urllib # para leer el archivo
 import re
@@ -28,7 +18,8 @@ import json
 from django.core.context_processors import csrf
 
 def home(request):
-	return render_to_response('videodata_app/index.html', {})
+	videos = Video.objects.all()
+	return render_to_response('videodata_app/index.html', {'videos': videos})
 
 
 def tagging(request, video_id):
@@ -39,14 +30,17 @@ def tagging(request, video_id):
 	# print html
 	
 	video, created = Video.objects.get_or_create(video_id=video_id)
-	
+	tags = Tag.objects.filter(video_id = video.id)
 	if created:
 		print video
 
 	else:
 		print video
 
-	return render_to_response('videodata_app/tagging.html', {"video": video, 'csrf_token': unicode(csrf(request)['csrf_token'])})
+	return render_to_response('videodata_app/tagging.html',
+								{"video": video,
+								"tags": tags,
+								'csrf_token': unicode(csrf(request)['csrf_token'])})
 
 
 def save_tag(request, video_id):
@@ -79,6 +73,15 @@ def save_tag(request, video_id):
 	# Tag.objects.get_or_create()
 
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+def viewer_video(request, video_id):
+	video = get_object_or_404(Video, video_id=video_id)
+	tags = Tag.objects.filter(video_id= video.id)
+	return render_to_response('videodata_app/viewer_video.html',
+								{"video": video,
+								"tags" : tags,
+								'csrf_token': unicode(csrf(request)['csrf_token'])})
 
 
 def scrap_subtitles_es():

@@ -1,88 +1,9 @@
 {% extends "videodata_app/base.html" %}
 {% load static %}
-
+{% load videodata_app_tags %}
 
 {% block content %}
-
-<div class="row">
-  <div class="col-md-12">
-	<section id="cont_video">
-		<div id="video"></div>
-		<!--
-
-		<video id="video" width="100%" data-videoid="{{video.video_id}}" data-id="{{video.id}}">
-			<source src="{% static "video/"|add:video.video_id|add:".mp4" %}">
-		</video>
-		-->
-		<nav id="controls">
-			<!-- 
-			 -->
-			<div class="btns-group">
-				<button id="play_pause" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
-				<button id="add_point" class="btn btn-default">Add point</button>
-			</div>
-			<br>
-			<div id="content_bar" class="progress">
-				<div id="progress-bar" class="progress-bar" style=""></div>
-				<!-- <div class="mark"></div> -->
-			</div>
-		</nav>
-	</section>
-	
-  </div>
-</div>
-<div id="list_tags">
-	<script type="text/template" id="tmpl_row_tag">
-	<div class="row">
-		<div class="col-md-6">
-			<b>{$quien$}</b>
-		</div>
-		<div class="col-md-6">{$que$}</div>	
-		<div class="col-md-12">{$descripcion$}</div>	
-	</div>
-	</script>
-</div>
-<script type="text/javascript">
-
-$(function(){
-	$.ajaxSetup({
-	  data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
-	});
-	console.log('{{ csrf_token }}');
- 	video = Popcorn.youtube(
-		'#video',
-		'https://www.youtube.com/watch?v={{video.video_id}}' );
-		// add a footnote at 2 seconds, and remove it at 6 seconds
-	// video.footnote({
-	// 	// start: 2,
-	// 	// end: 6,
-	// 	// text: "Pop!",
-	// 	// target: "popc"
-	// });
-	video.autoplay(false);
-
-	// video.addEventListener( "loadstart", function( e ) {
-
-	//   	console.log( "loadstart fired!" );
-		startApp(video);
-
-	// }, false );
-
-})
-</script>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<a href="{% url 'tagging' 'CjIk-hM-S1s'%}">DDJJAA #DDJAwards</a>
-<br>
-<a href="{% url 'tagging' 'yICAQNVwX-o'%}">Marcelo Own Goal #WorldCup</a>
-<br>
-<a href="{% url 'tagging' 'uHpR6FsjosM'%}">Robot Journalism #GENsummit</a>
-	
-
+	{% render_video video tags True %}
 <!-- POPUP -->
 <div class="cont_popup" hidden>
 	<div id="form-data">
@@ -113,7 +34,7 @@ $(function(){
 
 	<!-- 
 	 -->
-	<script type="text/javascript" src="{% static 'js/tagging.js' %}"></script>
+
 
 
 {% endblock %}

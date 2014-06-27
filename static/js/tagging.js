@@ -93,15 +93,16 @@ progress_bar_loading = 0;
 				.replace("{$descripcion$}", data.description);
 
 		// console.log(v.currentTime());
-		$("#list_tags").append(row);
 
 		// console.log(location.href +v.currentTime())
 		var tag_id = null;
 		$.post(location.href + "crear_tag/" , data, function(data_response, textStatus, xhr) {
 			console.log(data_response)
-		
-			mark.addClass("tag_id" + v.currentTime());
-			$(tmpl_row_tag).addClass("tag_id" + data_response.tag_id);
+			var _tag_id = "tag_id" + v.currentTime();
+			mark.addClass(_tag_id);
+			
+			$("#list_tags").append($(row).addClass(_tag_id).data("tag_id", _tag_id));
+			// $(tmpl_row_tag);
 
 
 		});

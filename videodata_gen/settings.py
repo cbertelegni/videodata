@@ -55,6 +55,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_LOADERS = (
+   'django.template.loaders.filesystem.Loader',
+   # 'django.template.loaders.app_directories.Loader',
+   'django.template.loaders.eggs.Loader',
+   # 'django.template.loaders.app_directories.load_template_source',
+)
+
 ROOT_URLCONF = 'videodata_gen.urls'
 
 WSGI_APPLICATION = 'videodata_gen.wsgi.application'
