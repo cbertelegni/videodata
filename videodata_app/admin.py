@@ -1,5 +1,5 @@
 from django.contrib import admin
-from videodata_app.models import Video, Tag
+from videodata_app.models import *
 
 
 class TagsInline(admin.TabularInline):
@@ -7,10 +7,10 @@ class TagsInline(admin.TabularInline):
 	extra = 0
 
 class VideoAdmin(admin.ModelAdmin):
-	inlines = [TagsInline,]
-	search_fields = ['tags__name', 'tags__short_desc']
+	# inlines = [TagsInline,]
+	# search_fields = ['tags__name', 'tags__short_desc']
 
-admin.site.register(Video, VideoAdmin,)
+admin.site.register(Video,)
 admin.site.register(Tag,)
 
 

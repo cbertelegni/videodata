@@ -13,7 +13,7 @@ import re
 import sys
 from pyquery import PyQuery as pq
 from lxml import etree
-from videodata_app.models import Video, Tag
+from videodata_app.models import *
 import json
 from django.core.context_processors import csrf
 
@@ -22,7 +22,7 @@ def home(request):
 	return render_to_response('videodata_app/index.html', {'videos': videos})
 
 
-def tagging(request, video_id):
+def tagging(request, video_id, version = None):
 	# print unicode(csrf(request)['csrf_token'])
 	# url = "http://www.youtube.com/get_video_info?video_id=Ghz5dQaMKTA"
 	# response = urllib2.urlopen(url)
@@ -30,16 +30,20 @@ def tagging(request, video_id):
 	# print html
 	
 	video, created = Video.objects.get_or_create(video_id=video_id)
-	tags = Tag.objects.filter(video_id = video.id)
-	if created:
-		print video
-
+	video_version = video.versions.first()
+	if video_version:
+		tags = video_version.tags.objects.all()
 	else:
-		print video
-
+		tags = None
+	# if video_version:
+	# 	tags = video_version.tags.objects.all()
+	# else:
+	# 	tags =None
 	return render_to_response('videodata_app/tagging.html',
 								{"video": video,
+								"video_version": video_version,
 								"tags": tags,
+								"editar": True,
 								'csrf_token': unicode(csrf(request)['csrf_token'])})
 
 
@@ -82,6 +86,7 @@ def viewer_video(request, video_id):
 								{"video": video,
 								"tags" : tags,
 								'csrf_token': unicode(csrf(request)['csrf_token'])})
+
 
 
 def scrap_subtitles_es():
