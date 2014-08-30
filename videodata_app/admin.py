@@ -9,9 +9,12 @@ class TagsInline(admin.TabularInline):
 class VideoAdmin(admin.ModelAdmin):
 	# inlines = [TagsInline,]
 	# search_fields = ['tags__name', 'tags__short_desc']
+	pass
 
-admin.site.register(Video,)
-admin.site.register(Tag,)
+
+admin.site.register(Video)
+admin.site.register(VideoVersion)
+admin.site.register(Tag)
 
 
 # Register your models here.

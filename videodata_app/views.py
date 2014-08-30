@@ -32,8 +32,10 @@ def tagging(request, video_id, version = None):
 	video, created = Video.objects.get_or_create(video_id=video_id)
 	video_version = video.versions.first()
 	if video_version:
-		tags = video_version.tags.objects.all()
+		tags = video_version.tags.all()
 	else:
+		video_version = VideoVersion(video = video)
+		video_version.save()
 		tags = None
 	# if video_version:
 	# 	tags = video_version.tags.objects.all()
@@ -50,10 +52,10 @@ def tagging(request, video_id, version = None):
 def save_tag(request, video_id):
 	
 	video = Video.objects.filter(video_id = video_id, ).first()
-	print video.id
+	name, created_name = Name.objects.get_or_create(name = request.POST['name'])
 	tag, created = Tag.objects.get_or_create(
-		video_id = video.id,
-		name = request.POST['name'],
+		video_version_id = video.id,
+		name_id = name.id,
 		short_desc = request.POST['short_desc'],
 		description = request.POST['description'],
 		start_time = request.POST['start_time'],
