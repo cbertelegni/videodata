@@ -1,4 +1,4 @@
-video-data
+Videodata
 ==========
 
 ## Intalación
